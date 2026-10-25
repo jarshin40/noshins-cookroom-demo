@@ -28,10 +28,16 @@ a{color:inherit}
 .wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
 
 header{background:var(--coal);color:var(--white);position:sticky;top:0;z-index:40}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.25rem;gap:1rem}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.25rem;gap:1rem;position:relative}
 .logo{font-weight:700;font-size:1.35rem;text-decoration:none}
 .logo b{color:var(--turmeric)}
+.menu-btn{display:none;margin-left:auto;background:none;border:2px solid rgba(255,255,255,.35);border-radius:10px;width:2.7rem;height:2.7rem;cursor:pointer;padding:0;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.menu-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:transform .25s,opacity .25s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links{display:flex;gap:.25rem;align-items:center}
+.nav-links a.active{background:rgba(255,255,255,.18);opacity:1}
 .nav-links a{text-decoration:none;padding:.4rem .8rem;border-radius:999px;opacity:.9}
 .nav-links a:hover{background:rgba(255,255,255,.12)}
 .nav-links a.cta{background:var(--turmeric);color:var(--coal);font-weight:600;opacity:1}
@@ -92,6 +98,17 @@ textarea{min-height:76px;resize:vertical}
 .info td{padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
 .info td:last-child{text-align:right;font-weight:600}
 
+.was{color:var(--muted);font-weight:400;font-size:.88em;margin-left:.4rem;text-decoration:line-through;text-decoration-thickness:1.5px}
+.lft{display:flex;align-items:center;gap:.85rem;min-width:0}
+.pic{flex:none;width:3.4rem;height:3.4rem;border-radius:14px;background:#fdeccb;display:grid;place-items:center;font-size:1.9rem;overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){
+  .menu-btn{display:flex}
+  .nav-links{position:absolute;left:0;right:0;top:100%;background:var(--coal);flex-direction:column;align-items:stretch;gap:0;padding:.5rem 1.25rem 1.25rem;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 18px 30px rgba(0,0,0,.3);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility .25s}
+  .nav-links.open{opacity:1;visibility:visible;transform:none}
+  .nav-links a{padding:.9rem .5rem;border-radius:0;border-bottom:1px solid rgba(255,255,255,.08);font-size:1.1rem}
+  .nav-links a.cta{margin-top:.75rem;text-align:center;border-radius:999px;border:0;padding:.85rem}
+}
 footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
 
 .offer{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.5rem}
@@ -104,7 +121,6 @@ footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
   .hero .wrap,.layout{grid-template-columns:1fr}
   .bowl{max-width:300px;order:-1}
   .cart{position:static}
-  .nav-links a:not(.cta){display:none}
   .btn.line{margin:.6rem 0 0}
 }
 @media (prefers-reduced-motion:reduce){.steam{animation:none;opacity:.7}html{scroll-behavior:auto}}
@@ -115,11 +131,13 @@ footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
 <header>
   <div class="wrap nav">
     <a class="logo" href="#top">নোশিন'স <b>কুকরুম</b></a>
-    <nav class="nav-links" aria-label="প্রধান মেনু">
-      <a href="#why">কেন আমরা</a>
-      <a href="#menu">মেনু</a>
-      <a href="#visit">ঠিকানা</a>
-      <a class="cta" href="#menu">অর্ডার করুন</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuList" aria-label="মেনু খুলুন"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="menuList" aria-label="প্রধান মেনু">
+      <a href="index.html#menu">মেনু</a>
+      <a href="reviews.html" >রিভিউ</a>
+      <a href="about.html" >আমাদের গল্প</a>
+      <a href="find-us.html" >ঠিকানা</a>
+      <a class="cta" href="index.html#menu">অর্ডার করুন</a>
     </nav>
   </div>
 </header>
@@ -280,6 +298,11 @@ footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
   var FREE_DELIVERY_MIN = 2000;  // free delivery from this order total (BDT)
   var DISCOUNT_MIN = 3500;       // discount from this order total (BDT)
   var DISCOUNT_RATE = 0.15;      // 0.15 = 15%
+  // Real photos: put images in an "images" folder and list them here, e.g. kacchi: "images/kacchi.jpg"
+  var PHOTOS = {};
+  // Previous (old) prices shown with a line through them. Change or delete any line you like.
+  var OLD = { kacchi:420, polao:330, khichuri:220, beef:380, ilish:500, vorta:180, borhani:80, doi:100, firni:110 };
+  var PICS = { kacchi:"🍛", polao:"🍗", khichuri:"🍲", beef:"🥩", ilish:"🐟", vorta:"🥗", borhani:"🥛", doi:"🍮", firni:"🍚" };
   var MENU = [
     { group: "ভাত ও বিরিয়ানি", items: [
       { id: "kacchi",  name: "কাচ্চি বিরিয়ানি",         note: "খাসির মাংস, বোরহানিসহ", price: 350, hot: true },
@@ -323,6 +346,7 @@ footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
         qty[it.id] = 0; all.push(it);
         var row = make("div", "row");
         var nm = make("div", "nm", it.name + " · " + tk(it.price));
+        if (OLD[it.id]) nm.appendChild(make("del", "was", tk(OLD[it.id])));
         if (it.hot) nm.appendChild(make("span", "badge", "জনপ্রিয়"));
         nm.appendChild(make("small", "", it.note));
 
@@ -341,7 +365,12 @@ footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
         plus.addEventListener("click", function () { set(qty[it.id] + 1); });
 
         box.appendChild(minus); box.appendChild(out); box.appendChild(plus);
-        row.appendChild(nm); row.appendChild(box);
+        var lft = make("div", "lft");
+        var pic = make("span", "pic");
+        if (PHOTOS[it.id]) { var im = make("img"); im.src = PHOTOS[it.id]; im.alt = it.name; im.loading = "lazy"; pic.appendChild(im); }
+        else { pic.textContent = PICS[it.id] || "🍽️"; pic.setAttribute("aria-hidden", "true"); }
+        lft.appendChild(pic); lft.appendChild(nm);
+        row.appendChild(lft); row.appendChild(box);
         itemsEl.appendChild(row);
       });
     });
@@ -424,5 +453,6 @@ footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
   build(); update();
 })();
 </script>
+<script>(function(){var b=document.getElementById("menuBtn"),l=document.getElementById("menuList");function s(o){l.classList.toggle("open",o);b.setAttribute("aria-expanded",o)}b.addEventListener("click",function(){s(!l.classList.contains("open"))});l.addEventListener("click",function(e){if(e.target.tagName==="A")s(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape")s(false)});document.addEventListener("click",function(e){if(!e.target.closest(".nav"))s(false)})})();</script>
 </body>
 </html>

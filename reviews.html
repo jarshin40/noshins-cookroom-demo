@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>রিভিউ – নোশিন'স কুকরুম</title>
+<meta name="description" content="আমাদের গ্রাহকরা কী বলছেন।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coal:#1c1714;
+  --coal2:#2a221d;
+  --turmeric:#eba51a;
+  --chili:#c0392b;
+  --paper:#fbf3e6;
+  --white:#fff;
+  --muted:#6b5d52;
+  --wa:#1fa855;
+  --font:"Hind Siliguri","Noto Sans Bengali","Kalpurush",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--font);background:var(--paper);color:var(--coal);line-height:1.7;font-size:1.08rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--turmeric);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+
+header{background:var(--coal);color:var(--white);position:sticky;top:0;z-index:40}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.25rem;gap:1rem;position:relative}
+.logo{font-weight:700;font-size:1.35rem;text-decoration:none}
+.logo b{color:var(--turmeric)}
+.menu-btn{display:none;margin-left:auto;background:none;border:2px solid rgba(255,255,255,.35);border-radius:10px;width:2.7rem;height:2.7rem;cursor:pointer;padding:0;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.menu-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:transform .25s,opacity .25s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-links{display:flex;gap:.25rem;align-items:center}
+.nav-links a.active{background:rgba(255,255,255,.18);opacity:1}
+.nav-links a{text-decoration:none;padding:.4rem .8rem;border-radius:999px;opacity:.9}
+.nav-links a:hover{background:rgba(255,255,255,.12)}
+.nav-links a.cta{background:var(--turmeric);color:var(--coal);font-weight:600;opacity:1}
+
+.hero{background:var(--coal);color:var(--white);padding:2.5rem 0 4rem;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+.tag{display:inline-block;color:var(--turmeric);border:1px solid var(--turmeric);border-radius:999px;padding:.1rem .9rem;font-size:.95rem;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.2;font-weight:700}
+.hero h1 em{font-style:normal;color:var(--turmeric)}
+.hero p{margin:1rem 0 1.75rem;max-width:34rem;color:#e7d9c8}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--turmeric);color:var(--coal);font:inherit;font-weight:600;padding:.75rem 1.5rem;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:#ffbb33}
+.btn.wa{background:var(--wa);color:var(--white)}
+.btn.wa:hover{background:#25bd62}
+.btn.line{background:transparent;color:var(--white);border:2px solid var(--white);margin-left:.4rem}
+.bowl{max-width:430px;width:100%;justify-self:center}
+.steam{animation:blow 3.4s ease-out infinite;opacity:0}
+.steam:nth-of-type(2){animation-delay:.9s}.steam:nth-of-type(3){animation-delay:1.8s}
+@keyframes blow{0%{opacity:0;transform:translate(-2px,12px)}30%{opacity:.85}100%{opacity:0;transform:translate(12px,-22px)}}
+
+section{padding:3.25rem 0}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);line-height:1.3;margin-bottom:.4rem}
+.lead{color:var(--muted);margin-bottom:1.75rem;max-width:36rem}
+
+.points{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.points div{background:var(--white);border-radius:14px;padding:1.2rem;border-bottom:4px solid var(--chili)}
+.points strong{display:block;color:var(--chili);font-size:1.1rem}
+.points span{color:var(--muted);font-size:.98rem}
+
+.layout{display:grid;gap:2rem;grid-template-columns:1.4fr 1fr;align-items:start}
+.panel{background:var(--white);border-radius:16px;padding:1.4rem}
+h3{color:var(--chili);font-size:1.05rem;margin:1.2rem 0 .2rem}
+h3:first-of-type{margin-top:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.65rem 0;border-bottom:1px solid #f0e6d6}
+.row .nm small{display:block;color:var(--muted);font-size:.9rem;line-height:1.4}
+.badge{font-size:.78rem;background:var(--chili);color:var(--white);border-radius:999px;padding:0 .55rem;margin-left:.4rem;vertical-align:middle}
+.qty{display:flex;align-items:center;gap:.35rem}
+.qty button{width:2.3rem;height:2.3rem;border-radius:50%;border:2px solid var(--chili);background:var(--white);color:var(--chili);font:inherit;font-weight:700;font-size:1.2rem;cursor:pointer;line-height:1}
+.qty button:hover{background:var(--chili);color:var(--white)}
+.qty output{min-width:1.8rem;text-align:center;font-weight:600}
+
+.cart{position:sticky;top:78px}
+.line{display:flex;justify-content:space-between;gap:1rem;padding:.25rem 0}
+.total{display:flex;justify-content:space-between;border-top:2px solid var(--coal);margin-top:.6rem;padding-top:.6rem;font-weight:700;font-size:1.25rem}
+.empty,.hint{color:var(--muted);font-size:.95rem}
+label{display:grid;gap:.25rem;font-weight:600;margin-top:.8rem;font-size:.97rem}
+input,textarea{font:inherit;padding:.65rem .8rem;border:2px solid #dccfbb;border-radius:10px;background:var(--white);color:var(--coal)}
+input:focus,textarea:focus{border-color:var(--chili);outline:none}
+textarea{min-height:76px;resize:vertical}
+.cart .btn{width:100%;justify-content:center;margin-top:1rem}
+.cart .btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+#msg{min-height:1.4rem;color:var(--chili);font-size:.93rem;margin-top:.5rem}
+
+.info{background:var(--coal);color:var(--white)}
+.info .wrap{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.info h2{color:var(--turmeric)}
+.info table{border-collapse:collapse;width:100%}
+.info td{padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.info td:last-child{text-align:right;font-weight:600}
+
+footer{background:#120e0c;color:#bba995;padding:1.4rem 0;font-size:.95rem}
+
+.offer{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.5rem}
+.offer span{background:var(--turmeric);color:var(--coal);font-weight:600;border-radius:999px;padding:.2rem .95rem;font-size:.97rem}
+.nudge{color:var(--chili);font-size:.95rem;font-weight:600;margin-top:.6rem}
+.fab{position:fixed;right:1rem;bottom:1rem;z-index:50;background:var(--wa);color:var(--white);border-radius:999px;padding:.7rem 1.1rem;text-decoration:none;font-weight:600;box-shadow:0 8px 22px rgba(0,0,0,.3);display:flex;gap:.5rem;align-items:center}
+.fab:hover{background:#25bd62}
+
+@media (max-width:820px){
+  .hero .wrap,.layout{grid-template-columns:1fr}
+  .bowl{max-width:300px;order:-1}
+  .cart{position:static}
+  .btn.line{margin:.6rem 0 0}
+}
+@media (prefers-reduced-motion:reduce){.steam{animation:none;opacity:.7}html{scroll-behavior:auto}}
+.lft{display:flex;align-items:center;gap:.85rem;min-width:0}
+.pic{flex:none;width:3.4rem;height:3.4rem;border-radius:14px;background:#fdeccb;display:grid;place-items:center;font-size:1.9rem;overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){
+  .menu-btn{display:flex}
+  .nav-links{position:absolute;left:0;right:0;top:100%;background:var(--coal);flex-direction:column;align-items:stretch;gap:0;padding:.5rem 1.25rem 1.25rem;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 18px 30px rgba(0,0,0,.3);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility .25s}
+  .nav-links.open{opacity:1;visibility:visible;transform:none}
+  .nav-links a{padding:.9rem .5rem;border-radius:0;border-bottom:1px solid rgba(255,255,255,.08);font-size:1.1rem}
+  .nav-links a.cta{margin-top:.75rem;text-align:center;border-radius:999px;border:0;padding:.85rem}
+}
+:root{--dark:var(--coal);--accent:var(--turmeric);--accent2:var(--chili);--bg:var(--paper)}
+
+.phead{background:var(--dark);color:#fff;padding:2.5rem 0 3.5rem}
+.phead h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;letter-spacing:-.01em}
+.phead p{margin-top:.75rem;max-width:36rem;color:rgba(255,255,255,.78)}
+.stars{color:var(--accent);letter-spacing:2px;white-space:nowrap}
+.score{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:2rem}
+.score b{font-size:3.4rem;line-height:1}
+.score .stars{font-size:1.4rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.card{background:#fff;border-radius:14px;padding:1.25rem;border-top:4px solid var(--accent)}
+.card .stars{font-size:1.1rem}
+.card p{margin:.6rem 0 .9rem}
+.who{display:flex;align-items:center;gap:.7rem;font-weight:600}
+.av{width:2.4rem;height:2.4rem;border-radius:50%;background:var(--accent2);color:#fff;display:grid;place-items:center;font-weight:700}
+.when{color:var(--muted);font-weight:400;font-size:.9rem}
+.fine{color:var(--muted);font-size:.92rem;margin:1.5rem 0 1rem}
+.story{display:grid;gap:2rem;grid-template-columns:1.3fr .7fr;align-items:start}
+.story p{margin-bottom:1rem}
+.aside{background:var(--dark);color:#fff;border-radius:16px;padding:1.5rem}
+.aside h3{color:var(--accent);margin:0 0 .6rem}
+.aside ul{list-style:none;padding:0}
+.aside li{padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.vals{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:2.5rem}
+.vals div{background:#fff;border-radius:14px;padding:1.2rem;border-bottom:4px solid var(--accent2)}
+.vals strong{display:block;color:var(--accent2)}
+.vals span{color:var(--muted);font-size:.97rem}
+.find{display:grid;gap:1.5rem;grid-template-columns:1.4fr 1fr;align-items:start}
+.map{border:0;width:100%;height:420px;border-radius:16px;background:#dfe8e3}
+.info2{background:#fff;border-radius:16px;padding:1.4rem}
+.info2 h2{font-size:1.2rem;margin:1.1rem 0 .3rem}
+.info2 h2:first-child{margin-top:0}
+.info2 table{width:100%;border-collapse:collapse}
+.info2 td{padding:.3rem 0;border-bottom:1px solid var(--bg)}
+.info2 td:last-child{text-align:right;font-weight:600}
+.btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem}
+.btn.alt{background:transparent;border:2px solid var(--accent2);color:var(--accent2)}
+.btn.alt:hover{background:var(--accent2);color:#fff}
+@media (max-width:820px){.story,.find{grid-template-columns:1fr}.map{height:320px}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">নোশিন'স <b>কুকরুম</b></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuList" aria-label="মেনু খুলুন"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="menuList" aria-label="প্রধান মেনু">
+      <a href="index.html#menu">মেনু</a>
+      <a href="reviews.html" class="active" aria-current="page">রিভিউ</a>
+      <a href="about.html" >আমাদের গল্প</a>
+      <a href="find-us.html" >ঠিকানা</a>
+      <a class="cta" href="index.html#menu">অর্ডার করুন</a>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="phead"><div class="wrap"><h1>আমাদের গ্রাহকদের কথা</h1><p>যাঁরা আমাদের রান্না চেখে দেখেছেন, তাঁরা কী বলছেন।</p></div></div>
+<section><div class="wrap">
+<div class="score"><b>৪.৭</b><div><span class="stars" role="img" aria-label="৫ এর মধ্যে ৫ তারা">★★★★★</span><div class="when">৬টি রিভিউয়ের গড়</div></div></div>
+<div class="cards">
+<article class="card"><span class="stars" role="img" aria-label="৫ এর মধ্যে ৫ তারা">★★★★★</span><p>কাচ্চি বিরিয়ানির মাংস এত নরম, মুখে দিলেই গলে যায়। হোয়াটসঅ্যাপে অর্ডার করে ঠিক সময়েই পেয়েছি।</p><div class="who"><span class="av" aria-hidden="true">র</span><div>রাফি আহমেদ<div class="when">২ সপ্তাহ আগে</div></div></div></article>
+<article class="card"><span class="stars" role="img" aria-label="৫ এর মধ্যে ৫ তারা">★★★★★</span><p>ইলিশ ভাজার স্বাদ একদম বাড়ির মতো। ভর্তা প্ল্যাটারটাও দারুণ ছিল।</p><div class="who"><span class="av" aria-hidden="true">ত</span><div>তানিয়া ইসলাম<div class="when">৩ সপ্তাহ আগে</div></div></div></article>
+<article class="card"><span class="stars" role="img" aria-label="৫ এর মধ্যে ৪ তারা">★★★★☆</span><p>খাবার গরম ছিল আর পরিমাণও যথেষ্ট। ডেলিভারি একটু দেরি হয়েছিল, তবে স্বাদে পুষিয়ে গেছে।</p><div class="who"><span class="av" aria-hidden="true">স</span><div>সাব্বির হোসেন<div class="when">১ মাস আগে</div></div></div></article>
+<article class="card"><span class="stars" role="img" aria-label="৫ এর মধ্যে ৫ তারা">★★★★★</span><p>অফিসের অনুষ্ঠানের জন্য ৪০০০ টাকার বেশি অর্ডার করেছিলাম। ছাড় আর ফ্রি ডেলিভারি পেয়ে খুব ভালো লেগেছে।</p><div class="who"><span class="av" aria-hidden="true">ম</span><div>মৌসুমী আক্তার<div class="when">১ মাস আগে</div></div></div></article>
+<article class="card"><span class="stars" role="img" aria-label="৫ এর মধ্যে ৪ তারা">★★★★☆</span><p>ভুনা গরুর মাংস ঠিক যতটা ঝাল চাই ততটাই ছিল। মিষ্টি দই ভাঁড়ে এসেছে, চমৎকার!</p><div class="who"><span class="av" aria-hidden="true">ফ</span><div>ফাহিম চৌধুরী<div class="when">২ মাস আগে</div></div></div></article>
+<article class="card"><span class="stars" role="img" aria-label="৫ এর মধ্যে ৫ তারা">★★★★★</span><p>খিচুড়ি আর ডিম ভুনা বৃষ্টির দিনে সেরা ছিল। আবার অর্ডার করব।</p><div class="who"><span class="av" aria-hidden="true">ন</span><div>নুসরাত জাহান<div class="when">২ মাস আগে</div></div></div></article>
+</div>
+<p class="fine">এই রিভিউগুলো পোর্টফোলিওর জন্য লেখা নমুনা, বাস্তব গ্রাহকের নয়।</p>
+<a class="btn" href="index.html#menu">অর্ডার করুন</a>
+</div></section>
+</main>
+<footer>
+  <div class="wrap">© ২০২৬ নোশিন'স কুকরুম। এটি পোর্টফোলিওর জন্য তৈরি একটি নমুনা ওয়েবসাইট।</div>
+</footer>
+<script>(function(){var b=document.getElementById("menuBtn"),l=document.getElementById("menuList");function s(o){l.classList.toggle("open",o);b.setAttribute("aria-expanded",o)}b.addEventListener("click",function(){s(!l.classList.contains("open"))});l.addEventListener("click",function(e){if(e.target.tagName==="A")s(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape")s(false)});document.addEventListener("click",function(e){if(!e.target.closest(".nav"))s(false)})})();</script>
+</body>
+</html>
